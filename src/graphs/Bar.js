@@ -1,45 +1,67 @@
-/**
- * Created by Caspar on 2017-05-09.
- */
-/**
- * Created by Caspar on 2017-05-08.
- */
 import React from 'react';
 import {
     AppRegistry,
     StyleSheet,
     Text,
-    View,
-    processColor
+    View, processColor
 } from 'react-native';
 
 import {BarChart} from 'react-native-charts-wrapper';
 
 const GREEN = processColor('#71BD6A');
-const RED = processColor('#D14B5A');
 const BLUE = processColor('#8470ff');
 
-class barMainK extends React.Component {
+
+class StackedBarChartScreen extends React.Component {
 
     constructor() {
         super();
 
         this.state = {
-            //colorDay: [RED, RED, RED, RED, RED],
-            //valueDay: [1,2,4,5],
+            legend: {
+                enabled: true,
+                textSize: 15,
+                form: "CIRCLE",
+                formSize: 15,
+                xEntrySpace: 100,
+                yEntrySpace: -10,
+                wordWrapEnabled: false
+            },
             data: {
                 dataSets: [{
-                    values: [{y: 11}, {y: 11}],
-                    label: 'Zero line dataset',
+                    values: [15],
+                    label: 'Elkonsumtion',
                     config: {
-                        //drawValues: false,
-                        valueTextSize: 20,
-                        colors: [GREEN, BLUE]
+                    drawValues: true,
+                    colors: [processColor('#d8bfd8')],
+                    valueTextSize: 20,
+                    }
+                }, {
+                    values: [15],
+                    label: 'Elproduktion',
+                    config: {
+                    drawValues: true,
+                    colors: [processColor('#71BD6A')],
+                    valueTextSize: 20,
                     }
                 }],
+                config: {
+                    barWidth: 1.2,
+                    group: {
+                        fromX: 0,
+                        groupSpace: 1,
+                        barSpace: 1,
+                    },
+                }
             },
             xAxis: {
-                enabled: false
+                enabled: false,
+                valueFormatter: ['', '', '', '', ''],
+                granularityEnabled: false,
+                granularity: 1,
+                axisMaximum: 5,
+                axisMinimum: 0,
+                centerAxisLabels: false
             },
             yAxis: {
                 left: {
@@ -55,12 +77,15 @@ class barMainK extends React.Component {
                     enabled: false
                 }
             }
+
+
+
         };
     }
 
     handleSelect(event) {
         let entry = event.nativeEvent
-        if (entry == null) {
+        if (entry == null ) {
             this.setState({...this.state, selectedEntry: null})
         } else {
             this.setState({...this.state, selectedEntry: JSON.stringify(entry)})
@@ -69,7 +94,6 @@ class barMainK extends React.Component {
 
     render() {
         return (
-
             <View style={{flex: 1}}>
                 <View style={styles.container}>
                     <BarChart
@@ -78,9 +102,10 @@ class barMainK extends React.Component {
                         xAxis={this.state.xAxis}
                         yAxis={this.state.yAxis}
                         description={{text: 'where is dis'}}
-                        legend={{enabled: false}}
+                        legend={this.state.legend}
                         onSelect={this.handleSelect.bind(this)}
-                        chartDescription = {{text: ''}}
+                        chartDescription = {{text: ' '}}
+                        touchEnabled={false}
                     />
                 </View>
 
@@ -92,13 +117,12 @@ class barMainK extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
-        flexDirection: 'column'
+        backgroundColor: 'white'
     },
     chart: {
-        flex: 1,
-        flexDirection: 'column',
+        flex: 1
     }
 });
 
-module.exports = barMainK;
+
+module.exports =  StackedBarChartScreen;

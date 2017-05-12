@@ -11,14 +11,17 @@ var {
     Animated,
     Image,
     Easing,
+    Dimensions,
     TouchableOpacity,
     ScrollView,
     TextInput,
 } = ReactNative;
 
 const timing = 10000;
+var {height, width} = Dimensions.get('window');
 
 var BarK = require('../graphs/barMainK');
+var Bar = require('../graphs/Bar');
 
 class MainPage extends Component {
 
@@ -90,25 +93,35 @@ class MainPage extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
-                    <View style={styles.mainPageLogo}>
-                        <Image source={pic} style = {{flex: 1}}></Image>
-                    </View>
+
                     <View style={styles.graph}>
-                        <BarK/>
+                        <Text style={styles.topLeft}>
+                            I år
+                        </Text>
+                        <Bar/>
+
                     </View>
 
-                    <View style={styles.usage}>
 
-                        <View style={styles.solarspin}>
-                            <Animated.Image
-                                style={{ width: 70, height: 70, transform: [{rotate: spin}] }}
-                                source={require('../icon/sun.png')}/>
+                    <View style={styles.graph}>
 
-                            <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
-                                4W
-                            </Text>
+                        <Text style={styles.topLeft}>
+                            Just nu
+                        </Text>
 
-                        </View>
+
+                        <View style={styles.usage}>
+
+                            <View style={styles.solarspin}>
+                                <Animated.Image
+                                    style={{ width: 70, height: 70, transform: [{rotate: spin}] }}
+                                    source={require('../icon/solen.png')}/>
+
+                                <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
+                                    4W
+                                </Text>
+
+                            </View>
 
 
 
@@ -125,8 +138,10 @@ class MainPage extends Component {
 
                     </View>
 
-                    <View style={styles.footer}>
+                    </View>
 
+                    <View style={{alignItems: 'center'}}>
+                         <Image source={pic} style = {{width: 0.5*width, height: 0.25*width}}></Image>
                     </View>
 
                 </View>
@@ -139,6 +154,7 @@ class MainPage extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 5,
         flex: 1,
     },
 
@@ -149,11 +165,18 @@ const styles = StyleSheet.create({
 
     mainPageLogo:{
         flex:2,
-        backgroundColor:'yellow',
+        elevation: 3,
+        padding: 0,
+        margin: 5,
+        backgroundColor:'white',
+
     },
 
     graph:{
         flex:3,
+        elevation: 3,
+        padding: 0,
+        margin: 5,
         backgroundColor: 'white'
     },
 
@@ -162,7 +185,12 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+       // elevation: 2,
+        //margin: 5,
+        //padding: 0,
+        //borderWidth: 2,
+        //borderColor: 'lightgrey',
     },
 
     solarspin:{
@@ -179,10 +207,24 @@ const styles = StyleSheet.create({
 
     footer:{
         flex:1,
-        backgroundColor:'cyan',
+        backgroundColor:'lightgrey',
         justifyContent: 'center',
         alignItems: 'center'
     },
+
+    topLeft:{
+        fontSize: 20,
+        fontFamily: 'Lucida Console',
+        fontWeight: 'bold',
+        color: 'black',
+
+        textShadowColor: 'lightgrey',
+        textShadowOffset: {width: 1, height: 1},
+
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 10,
+    }
 
 });
 

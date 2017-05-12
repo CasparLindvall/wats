@@ -19,7 +19,7 @@ var {
     processColor
 } = ReactNative;
 
-import BarP from '../graphs/barMainK';
+import BarP from '../graphs/Bar';
 
 import {BarChart} from 'react-native-charts-wrapper';
 
@@ -50,8 +50,11 @@ class Second extends Component {
 
                 <View style={styles.graphs}>
 
-                    <BarP style={{flex: 1}}/>
+                    <Text style={styles.topLeft}>
+                        Övverblick av elvanor
+                    </Text>
 
+                    <BarP style={{flex: 1}}/>
 
                 </View>
 
@@ -106,16 +109,20 @@ class Second extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 5,
     },
 
     graphs: {
         flex: 7,
         backgroundColor:'white',
+        elevation: 2,
+        margin: 5,
     },
 
     button: {
         flexDirection: 'row',
         flex: 1,
+
     },
 
 
@@ -127,7 +134,22 @@ const styles = StyleSheet.create({
 
     something: {
         flex: 2,
+
+    },
+    topLeft:{
+        fontSize: 20,
+        fontFamily: 'Lucida Console',
+        fontWeight: 'bold',
+        color: 'black',
+
+        textShadowColor: 'lightgrey',
+        textShadowOffset: {width: 1, height: 1},
+
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 10,
     }
+
 
 });
 module.exports = Second;

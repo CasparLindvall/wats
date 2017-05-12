@@ -9,17 +9,6 @@ import Overblick from './Second';
 //import Detalj from './Detalj';
 var Detalj = require('./Detalj');
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    page: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
-
 export default class Tabs extends Component {
     state = {
         index: 0,
@@ -66,5 +55,16 @@ export default class Tabs extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    page: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
 
 module.exports = Tabs;

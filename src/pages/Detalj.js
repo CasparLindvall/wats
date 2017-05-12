@@ -39,6 +39,11 @@ class Detalj extends Component {
             <View style={styles.container}>
 
                 <View style={styles.graphs}>
+
+                    <Text style={styles.topLeft}>
+                        Dygnsvy av elvanor
+                    </Text>
+
                     <ZeroLine/>
                 </View>
 
@@ -92,11 +97,15 @@ class Detalj extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 5,
     },
 
     graphs: {
         flex: 7,
-        backgroundColor:'black',
+        backgroundColor:'white',
+        elevation: 2,
+        margin: 5,
+        paddingTop: 5,
     },
 
     button: {
@@ -113,7 +122,21 @@ const styles = StyleSheet.create({
 
     something: {
         flex: 2,
+    },
+    topLeft:{
+        fontSize: 20,
+        fontFamily: 'Lucida Console',
+        fontWeight: 'bold',
+        color: 'black',
+
+        textShadowColor: 'lightgrey',
+        textShadowOffset: {width: 1, height: 1},
+
+        paddingLeft: 10,
+        paddingTop: 5,
+        paddingBottom: 10,
     }
+
 
 });
 module.exports = Detalj;

@@ -13,7 +13,7 @@ import {
 import {BarChart} from 'react-native-charts-wrapper';
 
 const GREEN = processColor('#71BD6A');
-const RED = processColor('#D14B5A');
+const RED = processColor('#8470ff');
 
 class ZeroLineChartScreen extends React.Component {
 
@@ -25,12 +25,12 @@ class ZeroLineChartScreen extends React.Component {
             valueDay: [1,2,4,5],
             data: {
                 dataSets: [{
-                    values: [{y: -1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],
+                    values: [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],
                     label: 'Zero line dataset',
                     config: {
                         drawValues: false,
-                        //valueTextSize: 8,
-                        colors: [RED, RED, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,RED, RED, RED, GREEN, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,GREEN, GREEN]
+                        //: 8,
+                        colors: [GREEN, RED, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,RED, RED, RED, GREEN, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,GREEN, GREEN]
                     }
                 }],
             },
@@ -38,9 +38,7 @@ class ZeroLineChartScreen extends React.Component {
                 enabled: true,
                 //drawAxisLine: true,
                 //drawGridLines: true,
-                $set: {
-                    valueFormatter: ['00:00', '', '', '', '',  '', '06:00', '', '', '', '',  '', '12:00', '', '', '', '',  '', '23:59', '1']
-                }
+                valueFormatter: ['00:00', '', '', '', '',  '', '06:00', '', '', '', '',  '', '12:00', '', '', '', '',  '', '23:59'],
 
             },
             yAxis: {
@@ -79,11 +77,10 @@ class ZeroLineChartScreen extends React.Component {
                         data={this.state.data}
                         xAxis={this.state.xAxis}
                         yAxis={this.state.yAxis}
-                        show
                         description={{text: 'where is dis'}}
                         legend={{enabled: false}}
-
                         onSelect={this.handleSelect.bind(this)}
+                        chartDescription = {{text: ' '}}
                     />
                 </View>
 
@@ -96,7 +93,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-start',
-        backgroundColor: '#F5FCFF'
+        backgroundColor: 'white'
     },
     chart: {
         flex: 1
