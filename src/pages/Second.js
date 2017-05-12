@@ -20,6 +20,7 @@ var {
 } = ReactNative;
 
 import BarP from '../graphs/Bar';
+import styles from './Styles';
 
 import {BarChart} from 'react-native-charts-wrapper';
 
@@ -51,7 +52,7 @@ class Second extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Övverblick av elvanor
+                        Övverblick: elvanor
                     </Text>
 
                     <BarP style={{flex: 1}}/>
@@ -105,53 +106,6 @@ class Second extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: 5,
-    },
-
-    graphs: {
-        flex: 7,
-        backgroundColor:'white',
-        elevation: 2,
-        margin: 5,
-    },
-
-    button: {
-        flexDirection: 'row',
-        flex: 1,
-
-    },
-
-
-    button1 : {
-        flexDirection: 'column',
-        flex: 1,
-        padding: 2,
-    },
-
-    something: {
-        flex: 2,
-
-    },
-    topLeft:{
-        fontSize: 20,
-        fontFamily: 'Lucida Console',
-        fontWeight: 'bold',
-        color: 'black',
-
-        textShadowColor: 'lightgrey',
-        textShadowOffset: {width: 1, height: 1},
-
-        paddingLeft: 10,
-        paddingTop: 5,
-        paddingBottom: 10,
-    }
-
-
-});
 module.exports = Second;
 
 

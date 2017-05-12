@@ -19,6 +19,10 @@ var {
 } = ReactNative;
 
 import ZeroLine from '../graphs/ZeroLineChartScreen';
+import styles from   './Styles';
+import DatePick from './DatePick';
+
+const dates = 'NU';
 const onButtonPress = () => {
     Alert.alert('Button has been pressed!');
 };
@@ -27,7 +31,12 @@ const onButtonPress = () => {
 class Detalj extends Component {
     constructor(props, context) {
         super(props, context);
+
+        this.state = {
+            date: 'dus wurk?',
+        };
     }
+
     _handlePress() {
         console.log('Pressed!');
     }
@@ -41,11 +50,14 @@ class Detalj extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Dygnsvy av elvanor
+                        Dygnsvy: elvanor under {this.date}
                     </Text>
 
                     <ZeroLine/>
+
                 </View>
+
+            {/*
 
                 <View style={styles.button}>
 
@@ -82,11 +94,15 @@ class Detalj extends Component {
 
 
                 </View>
-
+             */}
 
 
                 <View style={styles.something}>
+                    <DatePick
+                        datetime={this.state.date}
+                    />
                 </View>
+
 
 
             </View>
@@ -94,49 +110,4 @@ class Detalj extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: 5,
-    },
-
-    graphs: {
-        flex: 7,
-        backgroundColor:'white',
-        elevation: 2,
-        margin: 5,
-        paddingTop: 5,
-    },
-
-    button: {
-        flexDirection: 'row',
-        flex: 1,
-    },
-
-
-    button1 : {
-        flexDirection: 'column',
-        flex: 1,
-        padding: 2,
-    },
-
-    something: {
-        flex: 2,
-    },
-    topLeft:{
-        fontSize: 20,
-        fontFamily: 'Lucida Console',
-        fontWeight: 'bold',
-        color: 'black',
-
-        textShadowColor: 'lightgrey',
-        textShadowOffset: {width: 1, height: 1},
-
-        paddingLeft: 10,
-        paddingTop: 5,
-        paddingBottom: 10,
-    }
-
-
-});
 module.exports = Detalj;

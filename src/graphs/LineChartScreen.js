@@ -13,11 +13,13 @@ var norm = [100, 100, 100, 100;]
 */
 class LineChartScreen extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       data: {},
+      date: 'xxxx-yy-zz',
+
       legend: {
         enabled: true,
         textColor: processColor('blue'),

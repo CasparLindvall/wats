@@ -8,8 +8,8 @@ import {
 
 import {BarChart} from 'react-native-charts-wrapper';
 
-const GREEN = processColor('#71BD6A');
-const BLUE = processColor('#8470ff');
+const GREEN = '#71BD6A';
+const BLUE = '#8470ff';
 
 
 class StackedBarChartScreen extends React.Component {
@@ -24,25 +24,27 @@ class StackedBarChartScreen extends React.Component {
                 form: "CIRCLE",
                 formSize: 15,
                 xEntrySpace: 100,
-                yEntrySpace: -10,
+                yEntrySpace: 10,
                 wordWrapEnabled: false
             },
             data: {
                 dataSets: [{
-                    values: [15],
+                    values: [{x:1, y:11}],
                     label: 'Elkonsumtion',
                     config: {
                     drawValues: true,
-                    colors: [processColor('#d8bfd8')],
+                    colors: [processColor(BLUE)],
                     valueTextSize: 20,
+                    barShadowColor: processColor('lightgrey'),
                     }
                 }, {
                     values: [15],
                     label: 'Elproduktion',
                     config: {
                     drawValues: true,
-                    colors: [processColor('#71BD6A')],
+                    colors: [processColor(GREEN)],
                     valueTextSize: 20,
+                    barShadowColor: processColor('lightgrey'),
                     }
                 }],
                 config: {
@@ -56,22 +58,21 @@ class StackedBarChartScreen extends React.Component {
             },
             xAxis: {
                 enabled: false,
-                valueFormatter: ['', '', '', '', ''],
+                //valueFormatter: ['', '', '', '', ''],
                 granularityEnabled: false,
                 granularity: 1,
                 axisMaximum: 5,
                 axisMinimum: 0,
-                centerAxisLabels: false
+                centerAxisLabels: true
+
+
+
+
             },
             yAxis: {
                 left: {
-                    drawLabels: false,
-                    drawAxisLine: false,
-                    drawGridLines: false,
-                    zeroLine: {
-                        enabled: false,
-                        lineWidth: 100
-                    }
+                    axisMinimum: 0,
+                    enabled: false
                 },
                 right: {
                     enabled: false
@@ -106,6 +107,7 @@ class StackedBarChartScreen extends React.Component {
                         onSelect={this.handleSelect.bind(this)}
                         chartDescription = {{text: ' '}}
                         touchEnabled={false}
+                        scaleYEnabled={true}
                     />
                 </View>
 

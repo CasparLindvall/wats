@@ -13,33 +13,29 @@ import {
 import {BarChart} from 'react-native-charts-wrapper';
 
 const GREEN = processColor('#71BD6A');
+{/*BLUE*/}
 const RED = processColor('#8470ff');
 
 class ZeroLineChartScreen extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            colorDay: [RED, RED, RED, RED, RED],
-            valueDay: [1,2,4,5],
+            valueHour: [],
+            valueColor: [],
             data: {
                 dataSets: [{
                     values: [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],
-                    label: 'Zero line dataset',
+                    label: 'Zero line dataset', /*DON'T REMOVE!!!*/
                     config: {
                         drawValues: false,
-                        //: 8,
                         colors: [GREEN, RED, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,RED, RED, RED, GREEN, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,GREEN, GREEN]
                     }
                 }],
             },
             xAxis: {
-                enabled: true,
-                //drawAxisLine: true,
-                //drawGridLines: true,
-                valueFormatter: ['00:00', '', '', '', '',  '', '06:00', '', '', '', '',  '', '12:00', '', '', '', '',  '', '23:59'],
-
+                //valueFormatter: ['00:00', '', '', '', '',  '', '06:00', '', '', '', '',  '', '12:00', '', '', '', '',  '', '23:59'],
             },
             yAxis: {
                 left: {
@@ -81,10 +77,12 @@ class ZeroLineChartScreen extends React.Component {
                         legend={{enabled: false}}
                         onSelect={this.handleSelect.bind(this)}
                         chartDescription = {{text: ' '}}
+                        touchEnabled={false}
                     />
                 </View>
 
             </View>
+
         );
     }
 }
@@ -97,7 +95,13 @@ const styles = StyleSheet.create({
     },
     chart: {
         flex: 1
-    }
+    },
+    chosenDate: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white'
+    },
 });
 
 module.exports = ZeroLineChartScreen;

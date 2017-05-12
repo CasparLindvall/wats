@@ -22,6 +22,8 @@ var {height, width} = Dimensions.get('window');
 
 var BarK = require('../graphs/barMainK');
 var Bar = require('../graphs/Bar');
+import styles from './Styles';
+
 
 class MainPage extends Component {
 
@@ -66,7 +68,6 @@ class MainPage extends Component {
 
 
     }
-
 
     render() {
         /* This also works, to show functions instead of strings */
@@ -140,6 +141,7 @@ class MainPage extends Component {
 
                     </View>
 
+                    {/* TODO supp for 16:9 supp*/}
                     <View style={{alignItems: 'center'}}>
                          <Image source={pic} style = {{width: 0.5*width, height: 0.25*width}}></Image>
                     </View>
@@ -151,82 +153,6 @@ class MainPage extends Component {
         );
     }
 };
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 5,
-        flex: 1,
-    },
-
-    content: {
-        flex:7,
-        marginBottom: 0,
-    },
-
-    mainPageLogo:{
-        flex:2,
-        elevation: 3,
-        padding: 0,
-        margin: 5,
-        backgroundColor:'white',
-
-    },
-
-    graph:{
-        flex:3,
-        elevation: 3,
-        padding: 0,
-        margin: 5,
-        backgroundColor: 'white'
-    },
-
-    usage:{
-        flex:3,
-        backgroundColor:'white',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-       // elevation: 2,
-        //margin: 5,
-        //padding: 0,
-        //borderWidth: 2,
-        //borderColor: 'lightgrey',
-    },
-
-    solarspin:{
-        flex: 1,
-        alignItems: 'center',
-        paddingLeft: 50
-    },
-
-    consumptionspin:{
-        flex: 1,
-        alignItems: 'center',
-        paddingRight: 50
-    },
-
-    footer:{
-        flex:1,
-        backgroundColor:'lightgrey',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    topLeft:{
-        fontSize: 20,
-        fontFamily: 'Lucida Console',
-        fontWeight: 'bold',
-        color: 'black',
-
-        textShadowColor: 'lightgrey',
-        textShadowOffset: {width: 1, height: 1},
-
-        paddingLeft: 10,
-        paddingTop: 5,
-        paddingBottom: 10,
-    }
-
-});
 
 module.exports = MainPage;
 
