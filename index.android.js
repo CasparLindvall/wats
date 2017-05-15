@@ -12,12 +12,12 @@ import {
   View
 } from 'react-native';
 
-var BarK = require('./src/pages/Tabs');
+var Tabs = require('./src/components/Tabs');
 
 export default class wats extends Component {
   render() {
     return (
-    <BarK/>
+    <Tabs/>
     );
   }
 }
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f5fcff',
   },
   welcome: {
     fontSize: 20,

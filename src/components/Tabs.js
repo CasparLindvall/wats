@@ -4,18 +4,18 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View,StyleSheet } from 'react-native';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import MainPage from './MainPage';
-import Overblick from './Second';
+import MainPage from '../pages/MainPage';
+import Overblick from '../pages/Second';
 //import Detalj from './Detalj';
-var Detalj = require('./Detalj');
+var Detalj = require('../pages/Detalj');
 
 export default class Tabs extends Component {
     state = {
         index: 3,
         routes: [
-            { key: '1', title: 'Main' },
+            { key: '1', title: 'Hem' },
             { key: '2', title: 'Överblick' },
-            { key: '3', title: 'Detaljvy'}
+            { key: '3', title: 'Detaljerat'}
         ],
     };
 

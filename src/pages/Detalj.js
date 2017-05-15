@@ -19,8 +19,8 @@ var {
 } = ReactNative;
 
 import ZeroLine from '../graphs/ZeroLineChartScreen';
-import styles from   './Styles';
-import DatePick from './DatePick';
+import styles from   '../components/Styles';
+import DatePick from '../components/DatePick';
 
 const dates = 'NU';
 const onButtonPress = () => {
@@ -50,7 +50,7 @@ class Detalj extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Dygnsvy: elvanor under {this.date}
+                        Detalj: 16-05-2017
                     </Text>
 
                     <ZeroLine/>

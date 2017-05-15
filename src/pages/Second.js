@@ -20,7 +20,7 @@ var {
 } = ReactNative;
 
 import BarP from '../graphs/Bar';
-import styles from './Styles';
+import styles from '../components/Styles';
 
 import {BarChart} from 'react-native-charts-wrapper';
 
@@ -52,7 +52,7 @@ class Second extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Övverblick: elvanor
+                        Övverblick: vecka 20
                     </Text>
 
                     <BarP style={{flex: 1}}/>

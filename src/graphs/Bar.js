@@ -18,19 +18,22 @@ class StackedBarChartScreen extends React.Component {
         super();
 
         this.state = {
+
+
             legend: {
                 enabled: true,
                 textSize: 15,
                 form: "CIRCLE",
                 formSize: 15,
-                xEntrySpace: 100,
-                yEntrySpace: 10,
+                xEntrySpace: 20,
+                //yEntrySpace: 50,
+                setPosition: "center",
                 wordWrapEnabled: false
             },
             data: {
                 dataSets: [{
                     values: [{x:1, y:11}],
-                    label: 'Elkonsumtion',
+                    label: 'Solelskonsumtion (kWh)',
                     config: {
                     drawValues: true,
                     colors: [processColor(BLUE)],
@@ -39,7 +42,7 @@ class StackedBarChartScreen extends React.Component {
                     }
                 }, {
                     values: [15],
-                    label: 'Elproduktion',
+                    label: 'Elproduktion (kWh)',
                     config: {
                     drawValues: true,
                     colors: [processColor(GREEN)],

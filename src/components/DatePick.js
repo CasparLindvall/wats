@@ -15,7 +15,7 @@ export default class DatePick extends Component {
 
         this.state = {
             date: 'x',
-            datetime: '2017-05-12',
+            datetime: '16-05-2017',
         };
     }
 
@@ -37,7 +37,8 @@ export default class DatePick extends Component {
                     style={{width: 200}}
                     date={this.state.datetime}
                     mode="date"
-                    format="YYYY-MM-DD"
+                    //format="YYYY-MM-DD"
+                    format="DD-MM-YYYY"
                     confirmBtnText="Confirm"
                     cancelBtnText="Cancel"
 

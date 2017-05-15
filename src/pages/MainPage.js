@@ -21,8 +21,8 @@ const timing = 10000;
 var {height, width} = Dimensions.get('window');
 
 var BarK = require('../graphs/barMainK');
-var Bar = require('../graphs/Bar');
-import styles from './Styles';
+var Bar = require('../graphs/Bar2');
+import styles from '../components/Styles';
 
 
 class MainPage extends Component {
