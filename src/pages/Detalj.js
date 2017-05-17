@@ -25,8 +25,8 @@ import DatePick from '../components/DatePick';
 let dateFormat = require('dateformat');
 let now = new Date();
 
-let value1 = [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}];
-let value2 = [{y: 2}, {y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}]
+let value1 = [{y: 10}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}];
+let value2 = [{y: 2}, {y: 1}, {y: -20}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}]
 
 let index = 0;
 let values = [value1, value2];
@@ -39,20 +39,21 @@ class Detalj extends Component {
         //dateFormat(now, "dd, mm, yyyy");
         this.state = {
             dates: dateFormat(now, "dd-mm-yyyy").toString(),//'dus wurk?', //getDate -> child
-            valueDay: 1000
+            valueDay: 0
         };
     }
 
     //<MyChild myFunc={this.handleChildFunc.bind(this)} />
 
     getDate(newDate){
-        if(index == 0){
+        if(index === 0){
             index = 1;
         }
         else{
             index = 0;
         }
-        this.setState({dates: newDate, valueDay: values2[index]});
+        this.setState({dates: newDate, valueDay: index});
+        this.foo.updateValue(this.valueDay);
     }
 
     componentDidUpdate() {
