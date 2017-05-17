@@ -14,8 +14,7 @@ export default class DatePick extends Component {
         super(props);
 
         this.state = {
-            date: 'x',
-            datetime: '16-05-2017',
+            datetime: this.props.dates
         };
     }
 
@@ -30,8 +29,10 @@ export default class DatePick extends Component {
         });
     }
 
+
     render() {
         return (
+
             <View style={styles.container}>
                 <DatePicker
                     style={{width: 200}}
@@ -56,11 +57,18 @@ export default class DatePick extends Component {
                             marginLeft: 36
                         }
                     }}
-                    onDateChange={(datetime) => {this.setState({datetime: datetime});}}
+                    onDateChange={(datetime) => {this.setState({datetime: datetime})
+                        this.props.setDate(this.state.datetime)
+                        }
+                    }
+
+                        //this.props.setState(this.state.datetime)
 
                 />
             </View>
+
         );
+
     }
 }
 

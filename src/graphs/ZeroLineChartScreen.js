@@ -16,6 +16,8 @@ const GREEN = processColor('#71BD6A');
 {/*BLUE*/}
 const RED = processColor('#8470ff');
 
+const value1 = [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}];
+
 class ZeroLineChartScreen extends React.Component {
 
     constructor(props) {
@@ -26,8 +28,8 @@ class ZeroLineChartScreen extends React.Component {
             valueColor: [],
             data: {
                 dataSets: [{
-                    values: [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],
-                    label: 'Zero line dataset', /*DON'T REMOVE!!!*/
+                    values: [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],//this.props.valueDay,
+                    label: ' ',//this.props.dates, /*DON'T REMOVE!!!*/
                     config: {
                         drawValues: false,
                         colors: [GREEN, RED, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,RED, RED, RED, GREEN, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,GREEN, GREEN]
@@ -39,7 +41,7 @@ class ZeroLineChartScreen extends React.Component {
             },
             yAxis: {
                 left: {
-                    drawLabels: true,
+                    drawLabels: false,
                     drawAxisLine: true,
                     drawGridLines: true,
                     zeroLine: {
@@ -61,6 +63,16 @@ class ZeroLineChartScreen extends React.Component {
         } else {
             this.setState({...this.state, selectedEntry: JSON.stringify(entry)})
         }
+    }
+
+    updateValue(newValue){
+        this.setState({
+            data: {
+                dataSets: [{
+                    values: this.props.valueDay,
+                }]
+            }
+        })
     }
 
     render() {

@@ -22,25 +22,42 @@ import ZeroLine from '../graphs/ZeroLineChartScreen';
 import styles from   '../components/Styles';
 import DatePick from '../components/DatePick';
 
-const dates = 'NU';
-const onButtonPress = () => {
-    Alert.alert('Button has been pressed!');
-};
+let dateFormat = require('dateformat');
+let now = new Date();
 
+let value1 = [{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}];
+let value2 = [{y: 2}, {y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}]
+
+let index = 0;
+let values = [value1, value2];
+let values2 = [1, 100];
 
 class Detalj extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
 
+        //dateFormat(now, "dd, mm, yyyy");
         this.state = {
-            date: 'dus wurk?',
+            dates: dateFormat(now, "dd-mm-yyyy").toString(),//'dus wurk?', //getDate -> child
+            valueDay: 1000
         };
     }
 
-    _handlePress() {
-        console.log('Pressed!');
+    //<MyChild myFunc={this.handleChildFunc.bind(this)} />
+
+    getDate(newDate){
+        if(index == 0){
+            index = 1;
+        }
+        else{
+            index = 0;
+        }
+        this.setState({dates: newDate, valueDay: values2[index]});
     }
 
+    componentDidUpdate() {
+        //this.foo.updateValue(this.valueDay);
+    }
 
     render() {
 
@@ -50,56 +67,17 @@ class Detalj extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Detalj: 16-05-2017
+                        Detalj: {this.state.dates} and {this.state.valueDay.toString()}
                     </Text>
 
-                    <ZeroLine/>
+                    <ZeroLine ref={(foo) => { this.foo = foo; }}/>
 
                 </View>
-
-            {/*
-
-                <View style={styles.button}>
-
-
-                    <View style = {styles.button1}>
-                        <Button
-                            onPress={onButtonPress}
-                            title="Dag"
-                            accessibilityLabel="See an informative alert"/>
-                    </View>
-
-
-                    <View style = {styles.button1}>
-                        <Button
-                            onPress={onButtonPress}
-                            title="Vecka"
-                            accessibilityLabel="See an informative alert"/>
-                    </View>
-
-                    <View style = {styles.button1}>
-                        <Button
-                            onPress={onButtonPress}
-                            title="Månad"
-                            accessibilityLabel="See an informative alert"/>
-                    </View>
-
-                    <View style = {styles.button1}>
-                        <Button
-                            onPress={onButtonPress}
-                            title="År"
-                            accessibilityLabel="See an informative alert"/>
-                    </View>
-
-
-
-                </View>
-             */}
-
 
                 <View style={styles.something}>
                     <DatePick
-                        datetime={this.state.date}
+                        //<MyChild myFunc={this.handleChildFunc.bind(this)} />
+                        setDate={this.getDate.bind(this)}
                     />
                 </View>
 
