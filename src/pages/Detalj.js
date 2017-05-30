@@ -21,11 +21,6 @@ const GREEN = processColor('#71BD6A');
 {/*BLUE*/}
 const RED = processColor('#8470ff');
 
-let value = [{y: 100}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}];
-let value2 = [{y: 200}, {y: 1}, {y: -20}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}]
-let color = [GREEN, RED, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,RED, RED, RED, GREEN, RED, RED, GREEN,GREEN, GREEN , GREEN , GREEN, GREEN,GREEN, GREEN];
-
-let index = 0;
 class Detalj extends Component {
     constructor(props) {
         super(props);
@@ -33,33 +28,39 @@ class Detalj extends Component {
         //dateFormat(now, "dd, mm, yyyy");
         this.state = {
             dates: dateFormat(now, "dd-mm-yyyy").toString(),//'dus wurk?', //getDate -> child
-            flag: 99,
-            valueDay: value2
+            valueDay: [-2, -3, -2, 0, 1, 1, 2, -2, -3, 2, 3, 4, 6, 8, 8 , 8, 5,-5, -6, -6, -7, -3, -3,-2],
+            colorDay: [RED, RED, RED, RED, GREEN,GREEN, GREEN , RED, RED, GREEN,GREEN, GREEN, GREEN, GREEN, GREEN, GREEN, GREEN,RED, RED, RED, RED, RED,RED, RED]
         };
     }
 
     getColor(array){
+        let newColor = [];
         for(let i = 0; i < array.length; i++) {
-            color[i] = array[i] > 0 ? GREEN : RED;
+            newColor[i] = array[i] > 0 ? GREEN : RED;
         }
     }
 
     genData(){
-        value = Math.floor((Math.random() * 10) - 5);
-        //color = value.map((value) => this.getColor(value))
-        //this.getColor(value);
+        //newStates = Math.floor((Math.random() * 10) - 5);
+        let newData = [[], []];
+
+        for(let i = 0; i < 23; i++) {
+            let x = Math.floor((Math.random() * 10) - 4);
+            newData[0][i]  = x;
+            if(x > 0) {
+                newData[1][i] = GREEN
+            }
+            else{
+                newData[1][i] = RED;
+            }
+        }
+        return newData;
     }
 
     getDate(newDate){
-        if(index === 0){
-            index = 1;
-        }
-        else{
-            index = 0;
-        }
-        this.setState({dates: newDate, flag: index});
-        this.genData();
-        this.zeroRef.updateData(value, color);
+        let newStates = this.genData();
+        this.setState({dates: newDate, valueDay: newStates[0], colorDay: newStates[1]});
+        //this.zeroRef.updateData(newStates[0], newStates[1]);
     }
 
     render() {
@@ -70,11 +71,11 @@ class Detalj extends Component {
                 <View style={styles.graphs}>
 
                     <Text style={styles.topLeft}>
-                        Detalj: {this.state.dates} and {this.state.flag.toString()}
+                        Detalj: {this.state.dates}
                     </Text>
 
-                    <ZeroLine ref={(zeroRef) => { this.zeroRef = zeroRef; }}
-                        valueDay = {this.state.valueDay}/>
+                    <ZeroLine valueDay = {this.state.valueDay}
+                              colorDay = {this.state.colorDay}/>
 
                 </View>
 

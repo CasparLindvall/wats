@@ -20,7 +20,6 @@ var {
 const timing = 10000;
 var {height, width} = Dimensions.get('window');
 
-var BarK = require('../graphs/barMainK');
 var Bar = require('../graphs/Bar');
 import styles from '../components/Styles';
 
@@ -31,7 +30,11 @@ class MainPage extends Component {
         super()
         this.spinValue = new Animated.Value(0);
         this.spinValue2 = new Animated.Value(0);
-        this.state = {showText: true};
+        this.state = {
+            timeP: 'I år',
+            prod: 1164,
+            kons: 931.23,
+            showText: true};
     }
 
 
@@ -43,11 +46,11 @@ class MainPage extends Component {
 
 
     spin () {
-        this.spinValue.setValue(0) //Här ändras värdet på hur snabbt solen ska snurra
+        this.spinValue.setValue(2) //Här ändras värdet på hur snabbt solen ska snurra
         Animated.timing(
             this.spinValue,
             {
-                toValue: 1,
+                toValue: 4,
                 duration: timing,
                 easing: Easing.linear
             }
@@ -99,7 +102,10 @@ class MainPage extends Component {
                         <Text style={styles.topLeft}>
                             I år
                         </Text>
-                        <Bar/>
+                        <Bar
+                            prod={this.state.prod}
+                            kons={this.state.kons}
+                        />
 
                     </View>
 
@@ -119,7 +125,7 @@ class MainPage extends Component {
                                     source={require('../icon/solen.png')}/>
 
                                 <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
-                                    4W
+                                    2,8W
                                 </Text>
 
                             </View>
@@ -132,7 +138,7 @@ class MainPage extends Component {
                                 source={require('../icon/kugg.png')}/>
 
                             <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
-                                3W
+                                1,2W
                             </Text>
 
                         </View>

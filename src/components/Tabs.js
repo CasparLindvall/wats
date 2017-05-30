@@ -11,7 +11,7 @@ var Detalj = require('../pages/Detalj');
 
 export default class Tabs extends Component {
     state = {
-        index: 3,
+        index: 0,
         routes: [
             { key: '1', title: 'Hem' },
             { key: '2', title: 'Överblick' },

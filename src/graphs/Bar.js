@@ -14,8 +14,8 @@ const BLUE = '#8470ff';
 
 class StackedBarChartScreen extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
 
@@ -25,39 +25,10 @@ class StackedBarChartScreen extends React.Component {
                 textSize: 15,
                 form: "CIRCLE",
                 formSize: 15,
-                xEntrySpace: 20,
+                xEntrySpace: 15,
                 //yEntrySpace: 50,
                 setPosition: "center",
                 wordWrapEnabled: false
-            },
-            data: {
-                dataSets: [{
-                    values: [{x:1, y:11}],
-                    label: 'Solelskonsumtion (kWh)',
-                    config: {
-                    drawValues: true,
-                    colors: [processColor(BLUE)],
-                    valueTextSize: 20,
-                    barShadowColor: processColor('lightgrey'),
-                    }
-                }, {
-                    values: [15],
-                    label: 'Elproduktion (kWh)',
-                    config: {
-                    drawValues: true,
-                    colors: [processColor(GREEN)],
-                    valueTextSize: 20,
-                    barShadowColor: processColor('lightgrey'),
-                    }
-                }],
-                config: {
-                    barWidth: 1.2,
-                    group: {
-                        fromX: 0,
-                        groupSpace: 1,
-                        barSpace: 1,
-                    },
-                }
             },
             xAxis: {
                 enabled: false,
@@ -67,9 +38,6 @@ class StackedBarChartScreen extends React.Component {
                 axisMaximum: 5,
                 axisMinimum: 0,
                 centerAxisLabels: true
-
-
-
 
             },
             yAxis: {
@@ -102,7 +70,37 @@ class StackedBarChartScreen extends React.Component {
                 <View style={styles.container}>
                     <BarChart
                         style={styles.chart}
-                        data={this.state.data}
+                        //data={this.state.data}
+                        data = {{
+                            dataSets: [{
+                                values: [this.props.prod],
+                                label: 'Solelsproduktion (Wh)',
+                                config: {
+                                    drawValues: true,
+                                    colors: [processColor(GREEN)],
+                                    valueTextSize: 20,
+                                    barShadowColor: processColor('lightgrey'),
+                                }
+                            }, {
+                                values: [this.props.kons],
+                                label: 'Elkonsumtion (Wh)',
+                                config: {
+                                    drawValues: true,
+                                    colors: [processColor(BLUE)],
+                                    valueTextSize: 20,
+                                    barShadowColor: processColor('lightgrey'),
+                                }
+                            }],
+                            config: {
+                                barWidth: 1.2,
+                                group: {
+                                    fromX: 0,
+                                    groupSpace: 1,
+                                    barSpace: 1,
+                                },
+                            }
+                        }
+                        }
                         xAxis={this.state.xAxis}
                         yAxis={this.state.yAxis}
                         description={{text: 'where is dis'}}
