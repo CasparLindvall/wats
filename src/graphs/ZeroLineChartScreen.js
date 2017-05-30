@@ -1,7 +1,7 @@
 /**
  * Created by Caspar on 2017-05-08.
  */
-import React from 'react';
+import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -27,16 +27,16 @@ var myValue2 = 99;
 var myValue = [myValue1, myValue2];
 
 //var ind = 0;
-class ZeroLineChartScreen extends React.Component {
+export default class ZeroLineChartScreen extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state ={
-        data: {},
+        this.state = {
+       data: {},
         //valueHour: this.props.valueDay,
         colors: {},
-        ind: this.props.valueDay
+        ind: this.props.flag
         }
     }
 
@@ -45,6 +45,9 @@ class ZeroLineChartScreen extends React.Component {
     componentDidMount() {
             this.setState(
             update(this.state, {
+                ind: {
+                    $set: this.props.valueDay
+                },
                 data: {
                     $set: {
                         dataSets: [{
@@ -84,13 +87,6 @@ class ZeroLineChartScreen extends React.Component {
 
 
 
-
-
-
-
-
-
-
     handleSelect(event) {
         let entry = event.nativeEvent
         if (entry == null) {
@@ -109,33 +105,26 @@ class ZeroLineChartScreen extends React.Component {
         });
     }
 
-
-
-    updateValue(newValue){
-
-        {/*
-
-        // EXAMPLE 2
-        // add entries to "dataSet" object
-        //dataSet.addEntry();
-        //exampleData.notifyDataChanged(); // let the data know a dataSet changed
-        // chart.notifyDataSetChanged(); // let the chart know it's data changed
-        //chart.invalidate(); // refresh
-
-
-        const size = 10;
-        update(this.state, {
-            data: {
-                $set: {
-                    dataSets: [{
-                        values: this._randomYValues(2, size)
-
-                    }]
+    updateData(newValue, newColor){
+        this.setState(
+            update(this.state, {
+                ind: {
+                    $set: this.props.flag
+                },
+                data: {
+                    $set: {
+                        dataSets: [{
+                            values: newValue,//[{y: 1}, {y: -2}, {y: -2}, {y: -2}, {y: 0}, {y: 1}, {y: 2}, {y: 5}, {y: 6}, {y: 1}, {y: -1}, {y: -2},{y: -2}, {y: 1}, {y: -1}, {y: -1}, {y: 2}, {y: 4}, {y: 5}, {y: 6}, {y: 5}, {y: 3}, {y: 2}, {y: 2}],//this.props.valueDay,
+                            label: ' ',//this.props.dates, /*DON'T REMOVE!!!*/
+                            config: {
+                                drawValues: false,
+                                colors: newColor
+                            }
+                        }],
+                    }
                 }
-            }
         })
-    */}
-
+        );
     }
 
     render() {
@@ -155,7 +144,6 @@ class ZeroLineChartScreen extends React.Component {
                         touchEnabled={false}
                     />
                 </View>
-
             </View>
 
         );
@@ -180,5 +168,3 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
 });
-
-module.exports = ZeroLineChartScreen;
